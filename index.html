@@ -171,7 +171,7 @@
           $scope.votesIds.push($scope.votes.poi.s3.id);
           $scope.votesIds.push($scope.votes.poi.s2.id);
           $scope.votesIds.push($scope.votes.poi.s1.id);
-          $scope.url = '?votes=' + btoa(JSON.stringify($scope.votesIds));
+          $scope.url = window.location.origin + window.location.pathname + '?votes=' + btoa(JSON.stringify($scope.votesIds));
           navigator.clipboard.writeText($scope.url);
         };
         $scope.getCardClass = function(card) {
