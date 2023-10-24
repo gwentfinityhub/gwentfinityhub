@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html ng-app="gwentfinity" data-bs-theme="dark">
+  <head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body ng-controller="GwentfinityController">
+    <div class="vr"></div>
+    <div class="container">
+      <div class="row text-center">
+        <div class="col">
+          <div class="card">
+            <h1>Gwentfinity Balance Council URL Generator (BETA)</h1>
+			<h3>A better way to share your votes!</h3>
+            <p>Click on a button below the cards to add them to the voting list, once you're done click on "Copy URL to Clipboard" to copy the URL to share it with other players!</p>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">This tool is still WIP! If you find a bug create an issue on Github.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+			<div class="alert alert-danger alert-dismissible fade show" role="alert" ng-show="error">Whoops! Something went wrong, make sure the URL you entered is correct and try again!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vr"></div>
+    <div class="container">
+      <div class="row text-center" ng-show="!cards">
+        <div class="col">
+          <div class="card">
+            <h2>Loading Cards Definitions...</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vr"></div>
+    <div class="container">
+      <div class="row" ng-show="cards">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">Provisions Increase</div>
+            <ul class="list-group">
+              <li class="list-group-item" ng-class="getCardClass(votes.pri.s3)">{{votes.pri.s3.name}} <button ng-click="votes.pri.s3 = default3s" ng-show="votes.pri.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+              <li class="list-group-item" ng-class="getCardClass(votes.pri.s2)">{{votes.pri.s2.name}} <button ng-click="votes.pri.s2 = default2s" ng-show="votes.pri.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+              <li class="list-group-item" ng-class="getCardClass(votes.pri.s1)">{{votes.pri.s1.name}} <button ng-click="votes.pri.s1 = default1s" ng-show="votes.pri.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-header">Provisions Decrease</div>
+            <ul class="list-group">
+              <li class="list-group-item" ng-class="getCardClass(votes.prd.s3)">{{votes.prd.s3.name}} <button ng-click="votes.prd.s3 = default3s" ng-show="votes.prd.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+              <li class="list-group-item" ng-class="getCardClass(votes.prd.s2)">{{votes.prd.s2.name}} <button ng-click="votes.prd.s2 = default2s" ng-show="votes.prd.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+              <li class="list-group-item" ng-class="getCardClass(votes.prd.s1)">{{votes.prd.s1.name}} <button ng-click="votes.prd.s1 = default1s" ng-show="votes.prd.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-header">Power Decrease</div>
+            <ul class="list-group">
+              <li class="list-group-item" ng-class="getCardClass(votes.pod.s3)">{{votes.pod.s3.name}} <button ng-click="votes.pod.s3 = default3s" ng-show="votes.pod.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+              <li class="list-group-item" ng-class="getCardClass(votes.pod.s2)">{{votes.pod.s2.name}} <button ng-click="votes.pod.s2 = default2s" ng-show="votes.pod.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+              <li class="list-group-item" ng-class="getCardClass(votes.pod.s1)">{{votes.pod.s1.name}} <button ng-click="votes.pod.s1 = default1s" ng-show="votes.pod.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-header">Power Increase</div>
+            <ul class="list-group">
+              <li class="list-group-item" ng-class="getCardClass(votes.poi.s3)">{{votes.poi.s3.name}} <button ng-click="votes.poi.s3 = default3s" ng-show="votes.poi.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+              <li class="list-group-item" ng-class="getCardClass(votes.poi.s2)">{{votes.poi.s2.name}} <button ng-click="votes.poi.s2 = default2s" ng-show="votes.poi.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+              <li class="list-group-item" ng-class="getCardClass(votes.poi.s1)">{{votes.poi.s1.name}} <button ng-click="votes.poi.s1 = default1s" ng-show="votes.poi.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg></button></li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-header">URL</div>
+            <div class="card-body">
+              <input type="text" disabled ng-model="url">
+              <button type="button" class="btn btn-primary" ng-click="generateURL()">Copy URL to Clipboard</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <form>
+              <div class="input-group">
+                <span class="input-group-text">Search Filter</span>
+                <input type="text" placeholder="Start typing here to filter cards (by name, faction, type...)" class="form-control" ng-model="filter">
+              </div>
+              <div class="input-group">
+                <span class="input-group-text">Search Limit</span>
+                <input type="range" class="form-range" min="50" max="500" ng-model="limitTo">
+              </div>
+            </form>
+          </div>	
+          <div class="card" ng-repeat="card in cards | filter : filter | limitTo : limitTo">
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center" ng-class="getCardClass(card)">{{card.name}}</li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="badge bg-primary rounded-pill">Faction {{card.faction}}</span>
+                <span class="badge bg-secondary rounded-pill">Type {{card.type}}</span>
+                <span class="badge bg-tertiary rounded-pill">Power {{card.power}}</span>
+                <span class="badge bg-warning rounded-pill">Provisions {{card.provision}}</span>
+              </li>
+            </ul>
+            <div class="btn-group" role="group">
+              <button ng-click="votes.pri.s3 = card" type="button" class="btn btn-sm btn-danger">PR+(⋆⋆⋆)</button>
+              <button ng-click="votes.pri.s2 = card" type="button" class="btn btn-sm btn-danger">PR+(⋆⋆)</button>
+              <button ng-click="votes.pri.s1 = card" type="button" class="btn btn-sm btn-danger">PR+(⋆)</button>
+              <button ng-click="votes.prd.s3 = card" type="button" class="btn btn-sm btn-success">PR-(⋆⋆⋆)</button>
+              <button ng-click="votes.prd.s2 = card" type="button" class="btn btn-sm btn-success">PR-(⋆⋆)</button>
+              <button ng-click="votes.prd.s1 = card" type="button" class="btn btn-sm btn-success">PR-(⋆)</button>
+              <button ng-click="votes.pod.s3 = card" type="button" class="btn btn-sm btn-danger">PO-(⋆⋆⋆)</button>
+              <button ng-click="votes.pod.s2 = card" type="button" class="btn btn-sm btn-danger">PO-(⋆⋆)</button>
+              <button ng-click="votes.pod.s1 = card" type="button" class="btn btn-sm btn-danger">PO-(⋆)</button>
+              <button ng-click="votes.poi.s3 = card" type="button" class="btn btn-sm btn-success">PO+(⋆⋆⋆)</button>
+              <button ng-click="votes.poi.s2 = card" type="button" class="btn btn-sm btn-success">PO+(⋆⋆)</button>
+              <button ng-click="votes.poi.s1 = card" type="button" class="btn btn-sm btn-success">PO+(⋆)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+      angular.module('gwentfinity', []).controller('GwentfinityController',['$scope', '$http', '$location', function($scope,$http,$location) {
+        $scope.generateURL = function() {
+          $scope.votesIds = [];
+          $scope.votesIds.push($scope.votes.pri.s3.id);
+          $scope.votesIds.push($scope.votes.pri.s2.id);
+          $scope.votesIds.push($scope.votes.pri.s1.id);
+          $scope.votesIds.push($scope.votes.prd.s3.id);
+          $scope.votesIds.push($scope.votes.prd.s2.id);
+          $scope.votesIds.push($scope.votes.prd.s1.id);
+          $scope.votesIds.push($scope.votes.pod.s3.id);
+          $scope.votesIds.push($scope.votes.pod.s2.id);
+          $scope.votesIds.push($scope.votes.pod.s1.id);
+          $scope.votesIds.push($scope.votes.poi.s3.id);
+          $scope.votesIds.push($scope.votes.poi.s2.id);
+          $scope.votesIds.push($scope.votes.poi.s1.id);
+          $scope.url = '?votes=' + btoa(JSON.stringify($scope.votesIds));
+          navigator.clipboard.writeText($scope.url);
+        };
+        $scope.getCardClass = function(card) {
+          if (!card) {
+            return 'list-group-item-light';
+          }
+          if ((card.color == 'Gold') || (card.color == 'Leader')) {
+            return 'list-group-item-warning';
+          }
+          else {
+            return 'list-group-item-light';
+          }
+        };
+        $scope.generateVotes = function() {
+          $scope.default3s = {
+            id : 0,
+            name : '⋆⋆⋆'
+          };
+          $scope.default2s = {
+            id : 0,
+            name : '⋆⋆'
+          };
+          $scope.default1s = {
+            id : 0,
+            name : '⋆'
+          };
+          $scope.votes = {
+            pri : {
+              s3 : {
+                id : 0,
+                name : '⋆⋆⋆'
+              },
+              s2 : {
+                id : 0,
+                name : '⋆⋆'
+              },
+              s1 : {
+                id : 0,
+                name : '⋆'
+              }
+            },
+            prd : {
+              s3 : {
+                id : 0,
+                name : '⋆⋆⋆'
+              },
+              s2 : {
+                id : 0,
+                name : '⋆⋆'
+              },
+              s1 : {
+                id : 0,
+                name : '⋆'
+              }
+            },
+            pod : {
+              s3 : {
+                id : 0,
+                name : '⋆⋆⋆'
+              },
+              s2 : {
+                id : 0,
+                name : '⋆⋆'
+              },
+              s1 : {
+                id : 0,
+                name : '⋆'
+              }
+            },
+            poi : {
+              s3 : {
+                id : 0,
+                name : '⋆⋆⋆'
+              },
+              s2 : {
+                id : 0,
+                name : '⋆⋆'
+              },
+              s1 : {
+                id : 0,
+                name : '⋆'
+              }
+            }
+          };
+          try {
+            $scope.votesArray = JSON.parse(atob(window.location.search.substring(7)));
+            if ($scope.votesArray[0] != 0) {
+              $scope.votes.pri.s3 = $scope.getCardById($scope.votesArray[0]);
+            }
+            if ($scope.votesArray[1] != 0) {
+              $scope.votes.pri.s2 = $scope.getCardById($scope.votesArray[1]);
+            }
+            if ($scope.votesArray[2] != 0) {
+              $scope.votes.pri.s1 = $scope.getCardById($scope.votesArray[2]);
+            }
+            if ($scope.votesArray[3] != 0) {
+              $scope.votes.prd.s3 = $scope.getCardById($scope.votesArray[3]);
+            }
+            if ($scope.votesArray[4] != 0) {
+              $scope.votes.prd.s2 = $scope.getCardById($scope.votesArray[4]);
+            }
+            if ($scope.votesArray[5] != 0) {
+              $scope.votes.prd.s1 = $scope.getCardById($scope.votesArray[5]);
+            }
+            if ($scope.votesArray[6] != 0) {
+              $scope.votes.pod.s3 = $scope.getCardById($scope.votesArray[6]);
+            }
+            if ($scope.votesArray[7] != 0) {
+              $scope.votes.pod.s2 = $scope.getCardById($scope.votesArray[7]);
+            }
+            if ($scope.votesArray[8] != 0) {
+              $scope.votes.pod.s1 = $scope.getCardById($scope.votesArray[8]);
+            }
+            if ($scope.votesArray[9] != 0) {
+              $scope.votes.poi.s3 = $scope.getCardById($scope.votesArray[9]);
+            }
+            if ($scope.votesArray[10] != 0) {
+              $scope.votes.poi.s2 = $scope.getCardById($scope.votesArray[10]);
+            }
+            if ($scope.votesArray[11] != 0) {
+              $scope.votes.poi.s1 = $scope.getCardById($scope.votesArray[11]);
+            }
+          }
+          catch(e) {
+			if (window.location.search) {
+				$scope.error = true;
+			}
+          }
+        };
+        $scope.getCardById = function(id) {
+          for (var i = 0; i < $scope.cards.length; i++) {
+            if ($scope.cards[i].id == id) {
+              return $scope.cards[i];
+            }
+          }
+        };
+        var init = function() {
+			$http({
+				method: 'GET',
+				url: 'gwent.json'
+			}).then(function successCallback(response) {
+				$scope.limitTo = 50;
+				$scope.cards = response.data;
+				$scope.generateVotes();
+			}, function errorCallback(response) {
+			});
+        };
+        init();
+      }]);
+    </script>
+  </body>
+</html>
