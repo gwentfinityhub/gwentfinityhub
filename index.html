@@ -154,6 +154,7 @@
           </div>
 		  <div ng-repeat="card in cards | filter : filter | limitTo : limitTo">
 			  <div class="card mb-1">
+				<img ng-src="https://test.gwent.one/img/assets/deck/cards/{{card.art}}.png" class="card-img-top">
 				<ul class="list-group">
 				  <li class="list-group-item d-flex justify-content-between align-items-center" ng-class="getCardClass(card)">{{card.name}}</li>
 				  <li class="list-group-item d-flex justify-content-between align-items-center">
