@@ -3,7 +3,7 @@
   <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Gwentfinity Balance Council URL Generator (BETA)</title>
+	<title>Gwentfinity Balance Council URL Generator</title>
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<style>
@@ -14,6 +14,94 @@
 		body {
 			font-family: 'gwent', sans-serif !important;
 		}
+		*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+.asset {
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+.card_art,
+.card_name {
+  position: relative;
+  width: 525px;
+  height: 70px;
+}
+.card_art img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.card_name {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin-left: -35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-weight: 800;
+}
+
+.card_art[data-color="Gold"]   .card_border { background-image: url('https://gwent.one/image/gwent/assets/deck/other/border_gold.png'); }
+.card_art[data-color="Bronze"] .card_border { background-image: url('https://gwent.one/image/gwent/assets/deck/other/border_bronze.png'); }
+
+.card_art[data-provision="4"]  .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_4.png'); }
+.card_art[data-provision="5"]  .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_5.png'); }
+.card_art[data-provision="6"]  .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_6.png'); }
+.card_art[data-provision="7"]  .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_7.png'); }
+.card_art[data-provision="8"]  .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_8.png'); }
+.card_art[data-provision="9"]  .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_9.png'); }
+.card_art[data-provision="10"] .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_10.png'); }
+.card_art[data-provision="11"] .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_11.png'); }
+.card_art[data-provision="12"] .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_12.png'); }
+.card_art[data-provision="13"] .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_13.png'); }
+.card_art[data-provision="14"] .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_14.png'); }
+.card_art[data-provision="15"] .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_15.png'); }
+.card_art[data-provision="16"] .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_16.png'); }
+.card_art[data-provision="17"] .card_provision { background-image: url('https://gwent.one/image/gwent/assets/deck/number/provision_17.png'); }
+
+.card_art[data-power="1"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_1.png'); }
+.card_art[data-power="2"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_2.png'); }
+.card_art[data-power="3"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_3.png'); }
+.card_art[data-power="4"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_4.png'); }
+.card_art[data-power="5"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_5.png'); }
+.card_art[data-power="6"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_6.png'); }
+.card_art[data-power="7"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_7.png'); }
+.card_art[data-power="8"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_8.png'); }
+.card_art[data-power="9"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_9.png'); }
+.card_art[data-power="10"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_10.png'); }
+.card_art[data-power="11"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_11.png'); }
+.card_art[data-power="12"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_12.png'); }
+.card_art[data-power="13"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_13.png'); }
+.card_art[data-power="14"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_14.png'); }
+.card_art[data-power="15"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_15.png'); }
+.card_art[data-power="16"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_16.png'); }
+.card_art[data-power="17"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_17.png'); }
+.card_art[data-power="18"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_18.png'); }
+.card_art[data-power="19"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_19.png'); }
+.card_art[data-power="20"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_20.png'); }
+.card_art[data-power="21"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_21.png'); }
+.card_art[data-power="22"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_22.png'); }
+.card_art[data-power="23"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_23.png'); }
+.card_art[data-power="24"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_24.png'); }
+.card_art[data-power="25"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_25.png'); }
+
+.card_art[data-type="special"]  .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_star.png'); }
+.card_art[data-type="artifact"] .card_power { background-image: url('https://gwent.one/image/gwent/assets/deck/number/power_star.png'); }
+
+.card_art .gradient { background-image: url('https://gwent.one/image/gwent/assets/deck/other/gradient.png'); }
 	</style>
   </head>
   <body ng-controller="GwentfinityController">
@@ -22,15 +110,15 @@
         <div class="col">
           <div class="card">
 			<img src="header.png" class="card-img-top">
-            <h1 class="mt-2">Gwentfinity Balance Council URL Generator (BETA)</h1>
-			<h3>A better way to share your votes!</h3>
+            <h1 class="mt-2">Gwentfinity Balance Council URL Generator</h1>
+			<h3>A better way to share your votes! Powered by <a target="_blank" href="https://gwentfinity.wordpress.com/">Gwentfinity Hub!</a></h3>
             <p>Click on the buttons below the cards to add them to the voting list, once you're done click on "Copy URL to Clipboard" to copy the URL and share it with other players!</p>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">This tool is still WIP! If you find a bug create an issue on <a href="https://github.com/gwentfinityhub/gwentfinityhub" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
   <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
 </svg></a>. Feedback is welcome! Feel free to message me on <a href="https://www.reddit.com/user/raz3rITA" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-reddit" viewBox="0 0 16 16">
   <path d="M6.167 8a.831.831 0 0 0-.83.83c0 .459.372.84.83.831a.831.831 0 0 0 0-1.661zm1.843 3.647c.315 0 1.403-.038 1.976-.611a.232.232 0 0 0 0-.306.213.213 0 0 0-.306 0c-.353.363-1.126.487-1.67.487-.545 0-1.308-.124-1.671-.487a.213.213 0 0 0-.306 0 .213.213 0 0 0 0 .306c.564.563 1.652.61 1.977.61zm.992-2.807c0 .458.373.83.831.83.458 0 .83-.381.83-.83a.831.831 0 0 0-1.66 0z"/>
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.828-1.165c-.315 0-.602.124-.812.325-.801-.573-1.9-.945-3.121-.993l.534-2.501 1.738.372a.83.83 0 1 0 .83-.869.83.83 0 0 0-.744.468l-1.938-.41a.203.203 0 0 0-.153.028.186.186 0 0 0-.086.134l-.592 2.788c-1.24.038-2.358.41-3.17.992-.21-.2-.496-.324-.81-.324a1.163 1.163 0 0 0-.478 2.224c-.02.115-.029.23-.029.353 0 1.795 2.091 3.256 4.669 3.256 2.577 0 4.668-1.451 4.668-3.256 0-.114-.01-.238-.029-.353.401-.181.688-.592.688-1.069 0-.65-.525-1.165-1.165-1.165z"/>
-</svg></a>.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</svg></a>. Huge thanks to <a target="_blank" href="https://gwent.one/">Gwent One</a> for their help!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 			<div class="alert alert-danger alert-dismissible fade show" role="alert" ng-show="error">Whoops! Something went wrong, make sure the URL you entered is correct and try again!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -64,81 +152,162 @@
         <div class="col">
 		  <div class="card mb-2">
 			<img src="warcouncil.jpg" class="card-img-top">
-            <div class="card-header">Balance Council (11.10.0)</div>
+            <div class="card-header">Balance Council (11.10.5)</div>
 		  </div>
           <div class="card mb-2">
             <div class="card-header">Provisions Increase</div>
-            <ul class="list-group">
-              <li class="list-group-item" ng-class="getCardClass(votes.pri.s3)">{{votes.pri.s3.name}} <button ng-click="votes.pri.s3 = default3s" ng-show="votes.pri.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+			<div class="card_art" data-color="{{ votes.pri.s3.color }}" data-provision="{{ votes.pri.s3.provision }}" data-power="{{ votes.pri.s3.power }}" data-type="{{ votes.pri.s3.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.pri.s3.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.pri.s3.name }} <button ng-click="votes.pri.s3 = default3s" ng-show="votes.pri.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-              <li class="list-group-item" ng-class="getCardClass(votes.pri.s2)">{{votes.pri.s2.name}} <button ng-click="votes.pri.s2 = default2s" ng-show="votes.pri.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+</svg></button></span></div>
+			</div>
+			<div class="card_art" data-color="{{ votes.pri.s2.color }}" data-provision="{{ votes.pri.s2.provision }}" data-power="{{ votes.pri.s2.power }}" data-type="{{ votes.pri.s2.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.pri.s2.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.pri.s2.name }} <button ng-click="votes.pri.s2 = default2s" ng-show="votes.pri.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-              <li class="list-group-item" ng-class="getCardClass(votes.pri.s1)">{{votes.pri.s1.name}} <button ng-click="votes.pri.s1 = default1s" ng-show="votes.pri.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+</svg></button></span></div>
+			</div>
+			<div class="card_art" data-color="{{ votes.pri.s1.color }}" data-provision="{{ votes.pri.s1.provision }}" data-power="{{ votes.pri.s1.power }}" data-type="{{ votes.pri.s1.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.pri.s1.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.pri.s1.name }} <button ng-click="votes.pri.s1 = default1s" ng-show="votes.pri.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-            </ul>
+</svg></button></span></div>
+			</div>
           </div>
           <div class="card mb-2">
             <div class="card-header">Provisions Decrease</div>
-            <ul class="list-group">
-              <li class="list-group-item" ng-class="getCardClass(votes.prd.s3)">{{votes.prd.s3.name}} <button ng-click="votes.prd.s3 = default3s" ng-show="votes.prd.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            <div class="card_art" data-color="{{ votes.prd.s3.color }}" data-provision="{{ votes.prd.s3.provision }}" data-power="{{ votes.prd.s3.power }}" data-type="{{ votes.prd.s3.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.prd.s3.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.prd.s3.name }} <button ng-click="votes.prd.s3 = default3s" ng-show="votes.prd.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-              <li class="list-group-item" ng-class="getCardClass(votes.prd.s2)">{{votes.prd.s2.name}} <button ng-click="votes.prd.s2 = default2s" ng-show="votes.prd.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+</svg></button></span></div>
+			</div>
+			<div class="card_art" data-color="{{ votes.prd.s2.color }}" data-provision="{{ votes.prd.s2.provision }}" data-power="{{ votes.prd.s2.power }}" data-type="{{ votes.prd.s2.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.prd.s2.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.prd.s2.name }} <button ng-click="votes.prd.s2 = default2s" ng-show="votes.prd.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-              <li class="list-group-item" ng-class="getCardClass(votes.prd.s1)">{{votes.prd.s1.name}} <button ng-click="votes.prd.s1 = default1s" ng-show="votes.prd.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+</svg></button></span></div>
+			</div>
+			<div class="card_art" data-color="{{ votes.prd.s1.color }}" data-provision="{{ votes.prd.s1.provision }}" data-power="{{ votes.prd.s1.power }}" data-type="{{ votes.prd.s1.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.prd.s1.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.prd.s1.name }} <button ng-click="votes.prd.s1 = default1s" ng-show="votes.prd.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-            </ul>
+</svg></button></span></div>
+			</div>
           </div>
           <div class="card mb-2">
             <div class="card-header">Power Decrease</div>
-            <ul class="list-group">
-              <li class="list-group-item" ng-class="getCardClass(votes.pod.s3)">{{votes.pod.s3.name}} <button ng-click="votes.pod.s3 = default3s" ng-show="votes.pod.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            
+			<div class="card_art" data-color="{{ votes.pod.s3.color }}" data-provision="{{ votes.pod.s3.provision }}" data-power="{{ votes.pod.s3.power }}" data-type="{{ votes.pod.s3.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.pod.s3.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.pod.s3.name }} <button ng-click="votes.pod.s3 = default3s" ng-show="votes.pod.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-              <li class="list-group-item" ng-class="getCardClass(votes.pod.s2)">{{votes.pod.s2.name}} <button ng-click="votes.pod.s2 = default2s" ng-show="votes.pod.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+</svg></button></span></div>
+			</div>
+			<div class="card_art" data-color="{{ votes.pod.s2.color }}" data-provision="{{ votes.pod.s2.provision }}" data-power="{{ votes.pod.s2.power }}" data-type="{{ votes.pod.s2.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.pod.s2.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.pod.s2.name }} <button ng-click="votes.pod.s2 = default2s" ng-show="votes.pod.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-              <li class="list-group-item" ng-class="getCardClass(votes.pod.s1)">{{votes.pod.s1.name}} <button ng-click="votes.pod.s1 = default1s" ng-show="votes.pod.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+</svg></button></span></div>
+			</div>
+			<div class="card_art" data-color="{{ votes.pod.s1.color }}" data-provision="{{ votes.pod.s1.provision }}" data-power="{{ votes.pod.s1.power }}" data-type="{{ votes.pod.s1.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.pod.s1.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.pod.s1.name }} <button ng-click="votes.pod.s1 = default1s" ng-show="votes.pod.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-            </ul>
+</svg></button></span></div>
+			</div>
+			
+			
           </div>
           <div class="card">
             <div class="card-header">Power Increase</div>
-            <ul class="list-group">
-              <li class="list-group-item" ng-class="getCardClass(votes.poi.s3)">{{votes.poi.s3.name}} <button ng-click="votes.poi.s3 = default3s" ng-show="votes.poi.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            
+			<div class="card_art" data-color="{{ votes.poi.s3.color }}" data-provision="{{ votes.poi.s3.provision }}" data-power="{{ votes.poi.s3.power }}" data-type="{{ votes.poi.s3.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.poi.s3.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.poi.s3.name }} <button ng-click="votes.poi.s3 = default3s" ng-show="votes.poi.s3.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-              <li class="list-group-item" ng-class="getCardClass(votes.poi.s2)">{{votes.poi.s2.name}} <button ng-click="votes.poi.s2 = default2s" ng-show="votes.poi.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+</svg></button></span></div>
+			</div>
+			<div class="card_art" data-color="{{ votes.poi.s2.color }}" data-provision="{{ votes.poi.s2.provision }}" data-power="{{ votes.poi.s2.power }}" data-type="{{ votes.poi.s2.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.poi.s2.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.poi.s2.name }} <button ng-click="votes.poi.s2 = default2s" ng-show="votes.poi.s2.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-              <li class="list-group-item" ng-class="getCardClass(votes.poi.s1)">{{votes.poi.s1.name}} <button ng-click="votes.poi.s1 = default1s" ng-show="votes.poi.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+</svg></button></span></div>
+			</div>
+			<div class="card_art" data-color="{{ votes.poi.s1.color }}" data-provision="{{ votes.poi.s1.provision }}" data-power="{{ votes.poi.s1.power }}" data-type="{{ votes.poi.s1.type }}">
+			  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ votes.poi.s1.art }}.png" />
+			  <div class="asset gradient"></div>
+			  <div class="asset card_border"></div>
+			  <div class="asset card_provision"></div>
+			  <div class="asset card_power"></div>
+			  <div class="asset card_name"><span>{{ votes.poi.s1.name }} <button ng-click="votes.poi.s1 = default1s" ng-show="votes.poi.s1.id != 0" type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-</svg></button></li>
-            </ul>
+</svg></button></span></div>
+			</div>
+			
           </div>
         </div>
         <div class="col">
           <div class="card mb-2">
 			<img src="hattori.jpg" class="card-img-top">
-			<div class="card-header">Cards Database (11.10.0)</div>
+			<div class="card-header">Cards Database (11.10.5)</div>
 		  </div>
 		  <div class="card mb-2">
             <form>
@@ -153,34 +322,31 @@
             </form>
           </div>
 		  <div ng-repeat="card in cards | filter : filter | limitTo : limitTo">
-			  <div class="card mb-1">
-				<img ng-src="https://test.gwent.one/img/assets/deck/cards/{{card.art}}.png" class="card-img-top">
-				<ul class="list-group">
-				  <li class="list-group-item d-flex justify-content-between align-items-center" ng-class="getCardClass(card)">{{card.name}}</li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center">
-					<span class="badge bg-primary rounded-pill">Faction {{card.faction}}</span>
-					<span class="badge bg-info rounded-pill">Type {{card.type}}</span>
-					<span class="badge bg-secondary rounded-pill">Power {{card.power}}</span>
-					<span class="badge bg-warning rounded-pill">Provisions {{card.provision}}</span>
-				  </li>
-				</ul>
-			  </div>
-			  <div class="card mb-4">
-				<div class="btn-group" role="group">
-				  <button ng-click="votes.pri.s3 = card" type="button" class="btn btn-sm btn-danger">PR+(⋆⋆⋆)</button>
-				  <button ng-click="votes.pri.s2 = card" type="button" class="btn btn-sm btn-danger">PR+(⋆⋆)</button>
-				  <button ng-click="votes.pri.s1 = card" type="button" class="btn btn-sm btn-danger">PR+(⋆)</button>
-				  <button ng-click="votes.prd.s3 = card" type="button" class="btn btn-sm btn-success">PR-(⋆⋆⋆)</button>
-				  <button ng-click="votes.prd.s2 = card" type="button" class="btn btn-sm btn-success">PR-(⋆⋆)</button>
-				  <button ng-click="votes.prd.s1 = card" type="button" class="btn btn-sm btn-success">PR-(⋆)</button>
-				  <button ng-click="votes.pod.s3 = card" type="button" class="btn btn-sm btn-danger">PO-(⋆⋆⋆)</button>
-				  <button ng-click="votes.pod.s2 = card" type="button" class="btn btn-sm btn-danger">PO-(⋆⋆)</button>
-				  <button ng-click="votes.pod.s1 = card" type="button" class="btn btn-sm btn-danger">PO-(⋆)</button>
-				  <button ng-click="votes.poi.s3 = card" type="button" class="btn btn-sm btn-success">PO+(⋆⋆⋆)</button>
-				  <button ng-click="votes.poi.s2 = card" type="button" class="btn btn-sm btn-success">PO+(⋆⋆)</button>
-				  <button ng-click="votes.poi.s1 = card" type="button" class="btn btn-sm btn-success">PO+(⋆)</button>
+		      <div class="card mb-4">
+					<div class="card_art" data-color="{{ card.color }}" data-provision="{{ card.provision }}" data-power="{{ card.power }}" data-type="{{ card.type }}">
+					  <img src="https://gwent.one/image/gwent/assets/deck/art/{{ card.art }}.png" />
+					  <div class="asset gradient"></div>
+					  <div class="asset card_border"></div>
+					  <div class="asset card_provision"></div>
+					  <div class="asset card_power"></div>
+					  <div class="asset card_name"><span>{{ card.name }}</span></div>
+					</div>
+					<div class="btn-group" role="group">
+					  <button ng-click="votes.pri.s3 = card" type="button" class="btn btn-sm btn-danger">PR+(⋆⋆⋆)</button>
+					  <button ng-click="votes.pri.s2 = card" type="button" class="btn btn-sm btn-danger">PR+(⋆⋆)</button>
+					  <button ng-click="votes.pri.s1 = card" type="button" class="btn btn-sm btn-danger">PR+(⋆)</button>
+					  <button ng-click="votes.prd.s3 = card" type="button" class="btn btn-sm btn-success">PR-(⋆⋆⋆)</button>
+					  <button ng-click="votes.prd.s2 = card" type="button" class="btn btn-sm btn-success">PR-(⋆⋆)</button>
+					  <button ng-click="votes.prd.s1 = card" type="button" class="btn btn-sm btn-success">PR-(⋆)</button>
+					  <button ng-click="votes.pod.s3 = card" type="button" class="btn btn-sm btn-danger">PO-(⋆⋆⋆)</button>
+					  <button ng-click="votes.pod.s2 = card" type="button" class="btn btn-sm btn-danger">PO-(⋆⋆)</button>
+					  <button ng-click="votes.pod.s1 = card" type="button" class="btn btn-sm btn-danger">PO-(⋆)</button>
+					  <button ng-click="votes.poi.s3 = card" type="button" class="btn btn-sm btn-success">PO+(⋆⋆⋆)</button>
+					  <button ng-click="votes.poi.s2 = card" type="button" class="btn btn-sm btn-success">PO+(⋆⋆)</button>
+					  <button ng-click="votes.poi.s1 = card" type="button" class="btn btn-sm btn-success">PO+(⋆)</button>
+					</div>
 				</div>
-			  </div>
+			  
 		   </div>
         </div>
       </div>
